@@ -1,4 +1,5 @@
 import clients.CourierClient;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
 import models.Courier;
 import models.CourierCredentials;
@@ -29,6 +30,7 @@ public class LoginCourierTests {
     }
 
     @Test
+    @DisplayName("Авторизация курьера")
     public void successCourierLogin() {
         CourierCredentials credentials = new CourierCredentials(testCourier.getLogin(), testCourier.getPassword());
 
@@ -40,6 +42,7 @@ public class LoginCourierTests {
     }
 
     @Test
+    @DisplayName("Авторизация курьера с неверным логином")
     public void invalidLoginCourierLogin() {
         CourierCredentials invalidCredentials = new CourierCredentials(
                 testCourier.getLogin().substring(1),
@@ -54,6 +57,7 @@ public class LoginCourierTests {
     }
 
     @Test
+    @DisplayName("Авторизация курьера с неверным паролем")
     public void invalidPasswordCourierLogin() {
         CourierCredentials invalidCredentials = new CourierCredentials(
                 testCourier.getLogin(),
@@ -68,6 +72,7 @@ public class LoginCourierTests {
     }
 
     @Test
+    @DisplayName("Авторизация курьера без пароля")
     public void missingPasswordCourierLogin() {
         CourierCredentials invalidCredentials = new CourierCredentials(
                 testCourier.getLogin(),
@@ -82,6 +87,7 @@ public class LoginCourierTests {
     }
 
     @Test
+    @DisplayName("Авторизация курьера без логина")
     public void missingLoginCourierLogin() {
         CourierCredentials invalidCredentials = new CourierCredentials(
                 null,

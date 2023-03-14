@@ -44,8 +44,10 @@ public class CourierClient extends BaseClient {
     public void deleteCourierInTheEnd (String login, String password) {
         CourierCredentials credentials = new CourierCredentials(login, password);
         ValidatableResponse loginResponse = loginCourier(credentials);
-        int id = loginResponse.extract().path("id");
-        deleteCourier(id).statusCode(HTTP_OK);
+        if ( loginResponse.extract().statusCode() == HTTP_OK) {
+            int id = loginResponse.extract().path("id");
+            deleteCourier(id).statusCode(HTTP_OK);
+        }
     }
 
 }

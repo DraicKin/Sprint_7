@@ -1,4 +1,5 @@
 import clients.OrderClient;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
 import models.Order;
 import org.junit.Before;
@@ -15,7 +16,7 @@ public class CreateOrderTests {
     private Order order;
     OrderClient orderClient;
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters( name = "Любимый цвет. {index} Тестовые данные: {0} ")
     public static Object[][] data() {
         return new Object[][] {
                 {new String[]{"BLACK"}},
@@ -37,6 +38,7 @@ public class CreateOrderTests {
     }
 
     @Test
+    @DisplayName("Создание заказа")
     public void createValidOrder() {
 
         ValidatableResponse orderResponse = orderClient.createOrder(order);

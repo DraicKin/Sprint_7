@@ -1,4 +1,5 @@
 import clients.OrderClient;
+import io.qameta.allure.junit4.DisplayName;
 import models.ListOfOrders;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,6 +16,7 @@ public class ListOfOrderTests {
     }
 
     @Test
+    @DisplayName("Получение списка заказов без указания id курьера")
     public void returnsListOfOrders() {
         ListOfOrders listOfOrders = orderClient.getList();
         assertThat(listOfOrders.getOrders().length, greaterThan(0) );
